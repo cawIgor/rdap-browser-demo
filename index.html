@@ -1,21 +1,21 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Démonstration dans le navigateur d’une recherche RDAP d’adresse IP."
+      content="A browser-based RDAP lookup demo for IPv4 and IPv6 addresses."
     />
     <meta name="theme-color" content="#101a2d" />
-    <title>Démo RDAP — recherche d’adresse IP</title>
+    <title>RDAP demo — IP address lookup</title>
   </head>
   <body>
     <main class="page-shell">
       <header class="topbar">
-        <a class="brand" href="./" aria-label="Démo RDAP, accueil">
+        <a class="brand" href="./" aria-label="RDAP demo home">
           <span class="brand-mark" aria-hidden="true">R</span>
-          <span>RDAP <span class="brand-muted">/ labo</span></span>
+          <span>RDAP <span class="brand-muted">/ lab</span></span>
         </a>
         <a
           class="source-link"
@@ -23,22 +23,22 @@
           target="_blank"
           rel="noreferrer"
         >
-          Bibliothèque utilisée <span aria-hidden="true">↗</span>
+          Library used <span aria-hidden="true">↗</span>
         </a>
       </header>
 
       <section class="intro" aria-labelledby="page-title">
-        <p class="eyebrow"><span class="status-dot"></span> Démonstration navigateur</p>
-        <h1 id="page-title">À qui appartient<br /><span>cette adresse IP&nbsp;?</span></h1>
+        <p class="eyebrow"><span class="status-dot"></span> Browser demo</p>
+        <h1 id="page-title">Who owns<br /><span>this IP address?</span></h1>
         <p class="lede">
-          Interrogez les données d’enregistrement du réseau avec RDAP, directement depuis cette page.
-          Rien n’est recherché avant votre clic.
+          Look up network registration data with RDAP, right from this page.
+          No lookup happens until you click.
         </p>
       </section>
 
-      <section class="lookup-card" aria-label="Recherche RDAP">
+      <section class="lookup-card" aria-label="RDAP lookup">
         <form id="lookup-form" novalidate>
-          <label for="ip-address">Adresse IPv4 ou IPv6</label>
+          <label for="ip-address">IPv4 or IPv6 address</label>
           <div class="input-row">
             <div class="input-wrap">
               <span class="input-icon" aria-hidden="true">⌕</span>
@@ -50,20 +50,20 @@
                 autocomplete="off"
                 autocapitalize="none"
                 spellcheck="false"
-                placeholder="Ex. 8.8.8.8 ou 2001:4860:4860::8888"
+                placeholder="e.g. 8.8.8.8 or 2001:4860:4860::8888"
                 value="8.8.8.8"
                 aria-describedby="privacy-note"
                 required
               />
             </div>
             <button id="lookup-button" type="submit">
-              <span class="button-label">Rechercher</span>
+              <span class="button-label">Look up</span>
               <span class="button-arrow" aria-hidden="true">→</span>
             </button>
           </div>
           <p id="privacy-note" class="privacy-note">
             <span aria-hidden="true">ⓘ</span>
-            Au clic, l’IP est envoyée au serveur RDAP compétent. Cette démo ne la transmet pas à un service GeoIP.
+            When you click, the IP is sent to the authoritative RDAP server. This demo does not send it to a GeoIP service.
           </p>
         </form>
 
@@ -71,22 +71,22 @@
         <section id="result" class="result" aria-label="Résultat RDAP" hidden></section>
       </section>
 
-      <section class="explainer" aria-label="À propos des données">
+      <section class="explainer" aria-label="About the data">
         <div class="explainer-icon" aria-hidden="true">↗</div>
         <div>
-          <h2>Enregistrement réseau, pas géolocalisation</h2>
+          <h2>Network registration, not geolocation</h2>
           <p>
-            RDAP indique les informations publiées par le registre qui gère une plage IP. Le pays affiché
-            correspond à ces données d’enregistrement : il ne désigne pas nécessairement l’emplacement
-            physique de l’utilisateur ou du serveur.
+            RDAP returns information published by the registry responsible for an IP range. The country shown
+            comes from those registration records; it does not necessarily indicate the physical location
+            of a user or server.
           </p>
         </div>
       </section>
 
       <footer>
-        <span>Démo non officielle · aucune affiliation avec IANA ou les registres RDAP</span>
+        <span>Unofficial demo · not affiliated with IANA or RDAP registries</span>
         <a href="https://www.rfc-editor.org/rfc/rfc9224.html" target="_blank" rel="noreferrer">
-          Découvrir le bootstrap RDAP <span aria-hidden="true">↗</span>
+          About RDAP bootstrap <span aria-hidden="true">↗</span>
         </a>
       </footer>
     </main>

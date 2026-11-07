@@ -1,45 +1,43 @@
-# Démo RDAP dans le navigateur
+# RDAP IP lookup demo
 
-Une page statique de démonstration de [`@portable/rdap`](https://github.com/portablejs/portable/tree/main/packages/rdap) pour consulter les données RDAP d’une adresse IPv4 ou IPv6.
+**[Open the live GitHub Pages demo →](https://cawigor.github.io/rdap-browser-demo/)**
 
-La requête est déclenchée uniquement lorsque l’utilisateur clique sur **Rechercher**. La page affiche les informations d’enregistrement publiées par le registre RDAP (plage, CIDR, pays d’enregistrement, type de réseau et organisations disponibles). Elle ne fait pas de géolocalisation.
+A small static demo of [`@portable/rdap`](https://github.com/portablejs/portable/tree/main/packages/rdap) for looking up IPv4 and IPv6 registration data.
 
-## Lancer en local
+The lookup only starts after the user clicks **Look up**. The page displays the network details published through RDAP, such as the registered range, CIDR blocks, country, network type, and available organizations. It does not perform geolocation.
 
-Pré-requis : Node.js 24 ou supérieur et npm.
+## Run locally
+
+Requirements: Node.js 24 or later and npm.
 
 ```sh
 npm install
 npm run dev
 ```
 
-Vite indique ensuite l’URL locale à ouvrir.
+Vite prints the local URL to open.
 
-Pour vérifier la version de production :
+To check the production build locally:
 
 ```sh
 npm run build
 npm run preview
 ```
 
-## Publier sur GitHub Pages
+## GitHub Pages deployment
 
-Le workflow `.github/workflows/pages.yml` construit puis publie automatiquement le dossier `dist` à chaque push sur `main`.
+The workflow in `.github/workflows/pages.yml` builds the site and deploys the `dist` directory to GitHub Pages on every push to `main`.
 
-1. Créez un dépôt GitHub et poussez-y le contenu de ce dossier sur la branche `main`.
-2. Dans **Settings → Pages**, choisissez **GitHub Actions** comme source de publication.
-3. Le workflow publiera le site ; son URL apparaîtra dans l’exécution GitHub Actions et dans les paramètres Pages.
+The repository is configured to publish through GitHub Actions. The deployed site is available at [cawigor.github.io/rdap-browser-demo](https://cawigor.github.io/rdap-browser-demo/).
 
-Vite utilise des chemins relatifs pour que le site fonctionne aussi dans un dépôt de projet, par exemple `https://<utilisateur>.github.io/<nom-du-depot>/`.
+## Privacy and limitations
 
-## Confidentialité et limites
+- No RDAP lookup is made when the page loads.
+- When the user submits an address, the browser fetches IANA's RDAP bootstrap data if needed, then queries the RDAP server selected for that address. The IP address is therefore disclosed to the relevant registry's server.
+- RDAP servers may block cross-origin browser requests with CORS. If that happens, the browser cannot read the response; a server-side proxy may be needed.
+- Data comes from the registries and may be incomplete or inaccurate. The returned country is registration data, not a guaranteed physical location.
+- This demo does not send the IP address to a GeoIP provider.
 
-- Aucun appel RDAP n’est effectué au chargement de la page.
-- Au clic, le navigateur télécharge si nécessaire les fichiers bootstrap RDAP d’IANA, puis interroge le serveur RDAP déterminé pour l’adresse saisie. L’adresse IP est donc communiquée au serveur de registre concerné.
-- Les serveurs RDAP peuvent refuser les requêtes cross-origin (CORS). Dans ce cas, le navigateur ne peut pas lire leur réponse ; il faut alors envisager un proxy côté serveur.
-- Les données sont fournies par les registres et peuvent être absentes ou inexactes. Le pays affiché est une information d’enregistrement, pas une position géographique garantie.
-- Cette démo n’envoie pas l’IP à un fournisseur de GeoIP.
+## License
 
-## Licence
-
-Le code de cette démo est placé sous licence MIT (voir [`LICENSE`](LICENSE)). `@portable/rdap` et ses dépendances conservent leurs licences respectives.
+This demo is licensed under the MIT License; see [`LICENSE`](LICENSE). `@portable/rdap` and its dependencies retain their respective licenses.
